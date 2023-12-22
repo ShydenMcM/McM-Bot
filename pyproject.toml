@@ -1,0 +1,24 @@
+[tool.black]
+line-length = 121
+skip-string-normalization = true
+force-exclude = "LICENSE|.+.toml|.+.txt|.+.rst|.+.sql|.+.json|.+.md|.+.bat|.+.service|.+.yml|.+.env"
+
+[tool.isort]
+profile = "black"
+combine_as_imports = true
+combine_star = true
+line_length = 121
+
+[tool.pyright]
+typeCheckingMode = "off"
+pythonVersion = "3.11"
+reportUnusedImport = "error"
+reportUnnecessaryTypeIgnoreComment = "none"
+reportIncompatibleMethodOverride = "none"
+reportPrivateUsage = "error"
+exclude = [
+    "**/__pycache__",
+    '.github',
+    'venv'
+]
+
