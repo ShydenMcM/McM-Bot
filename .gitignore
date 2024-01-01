@@ -132,3 +132,4 @@ dmypy.json
 /resources/
 /dashboard/node_modules/
 /dashboard/config.json
+/.env_test
