@@ -1,6 +1,6 @@
 aiohttp~=3.9.1
 aiomysql~=0.2.0
-cryptography~=41.0.7
+cryptography~=42.0.1
 discord~=2.3.2
 orjson~=3.9.12
 python-dotenv~=1.0.0
