@@ -1,10 +1,10 @@
-aiohttp~=3.9.1
+aiohttp~=3.9.3
 aiomysql~=0.2.0
 cryptography~=42.0.2
 discord~=2.3.2
 orjson~=3.9.12
 python-dotenv~=1.0.1
 pyright~=1.1.347
-black~=23.12.1
+black~=24.1.1
 isort~=5.13.2
 requests~=2.31.0
