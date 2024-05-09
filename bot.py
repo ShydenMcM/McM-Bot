@@ -121,11 +121,11 @@ async def on_message(message: Message):
         if message.content == '' or message.content is None:
             print("Embed from OwO detected")
             with open("./owo/incoming_embeds.txt", "ab") as f:
-                f.write(str(message.embeds.pop().to_dict()).encode("utf-8"))
+                f.write(str(message.embeds.pop().to_dict()).encode("utf-8") + "\n")
         else:
             print("Message from OwO detected")
             with open("./owo/incoming_messages.txt", "ab") as f:
-                f.write(message.content.encode("utf-8"))
+                f.write(message.content.encode("utf-8") + "\n")
         f.close()
 
     if not any(banned_char in clean_message for banned_char in excluded_characters):
