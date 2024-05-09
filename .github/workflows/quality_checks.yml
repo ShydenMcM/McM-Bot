@@ -6,11 +6,17 @@ jobs:
   Checks:
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH_NAME }}
+          fetch-depth: 0
+
       - name: Install asdf
-        uses: asdf-vm/actions/setup@05e0d2ed97b598bfce82fd30daf324ae0c4570e6
+        uses: asdf-vm/actions/setup@v3
 
       - name: Cache asdf
-        uses: actions/cache@a2ed59d39b352305bdd2f628719a53b2cc4f9613
+        uses: actions/cache@v4
         with:
           path: |
             ~/.asdf
@@ -19,7 +25,7 @@ jobs:
             ${{ runner.os }}-asdf-
 
       - name: Install asdf dependencies in .tool-versions
-        uses: asdf-vm/actions/install@05e0d2ed97b598bfce82fd30daf324ae0c4570e6
+        uses: asdf-vm/actions/install@v3
         env:
           PYTHON_CONFIGURE_OPTS: --enable-shared
 
@@ -32,9 +38,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-venv-
 
-      - name: Install Dependencies
-        if: steps.cache-venv.outputs.cache-hit != 'true'
-        run: make install
+      - name: make install
+        run: |
+          export PATH="/home/runner/.asdf/installs/poetry/1.7.0/bin:$PATH"
+          cp .tool-versions ~/
+          make install
 
       - name: Lint
         run: make lint
