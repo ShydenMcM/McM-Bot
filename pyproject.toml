@@ -29,6 +29,7 @@ description = ""
 authors = ["shyden-not-shiden <shyden-not-shiden@gmail.com>"]
 license = "GNU GENERAL PUBLIC LICENSE"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
