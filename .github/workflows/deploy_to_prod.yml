@@ -3,7 +3,10 @@ on:
   workflow_dispatch:
 
 jobs:
+  quality_checks:
+    uses: ./.github/workflows/quality_checks.yml
   deploy:
+    needs: quality_checks
     runs-on: ubuntu-22.04
     environment: Prod
     env:

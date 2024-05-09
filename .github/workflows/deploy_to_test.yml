@@ -3,29 +3,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  Checks:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install Venv
-        run: pip install virtualenv
-      - name: Activate Venv
-        run: virtualenv venv
-      - run: source venv/bin/activate
-      - name: Install packages
-        run: pip install -r requirements.txt
-      - name: Isort
-        run: pip install isort
-      - run: isort ${{ github.workspace }}
-      - name: Black
-        run: pip install black
-      - run: black ${{ github.workspace }}
-      - name: Pyright
-        run: pip install pyright
-      - run: pyright ${{ github.workspace }}
+  quality_checks:
+    uses: ./.github/workflows/quality_checks.yml
   deploy:
-    needs: Checks
+    needs: quality_checks
     runs-on: ubuntu-22.04
     environment: Test
     env:
