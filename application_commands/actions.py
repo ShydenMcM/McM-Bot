@@ -25,7 +25,8 @@ async def bite(interaction: Interaction, user: User, reason: str = ""):
         embed.description = f":shark: Ouch! {interaction.user.mention} just bit {user.mention} {reason}!"
     if user.name == interaction.user.mention:
         embed.description = (
-            f'{interaction.user.mention} just bit themself! ' f'They took the phrase "you are what you eat" too literally'
+            f'{interaction.user.mention} just bit themself! '
+            f'They took the phrase "you are what you eat" too literally'
         )
     await interaction.response.send_message(embed=embed)
 
@@ -110,7 +111,9 @@ async def stare(interaction: Interaction, user: User, reason: str = ""):
     if user.bot:
         embed.description = f":eyes: {interaction.user.mention} is staring at a bot. When will it do something?"
     elif user.name != interaction.user.mention:
-        embed.description = f":eyes: {interaction.user.mention} is staring at {user.mention} with a serious gaze {reason}!"
+        embed.description = (
+            f":eyes: {interaction.user.mention} is staring at {user.mention} with a serious gaze {reason}!"
+        )
     else:
         embed.description = (
             f":eyes: {interaction.user.mention} just stared at themself without a mirror. "
@@ -131,7 +134,9 @@ async def wave(interaction: Interaction, user: User, reason: str = ""):
     elif user.name != interaction.user.mention:
         embed.description = f":wave: {interaction.user.mention} just waved at {user.mention}. {reason}!"
     else:
-        embed.description = f":wave: That's right {interaction.user.mention}, wave at yourself. Because nobody else will?"
+        embed.description = (
+            f":wave: That's right {interaction.user.mention}, wave at yourself. Because nobody else will?"
+        )
     await interaction.response.send_message(embed=embed)
 
 
