@@ -116,11 +116,24 @@ async def on_message(message: Message):
     clean_message = message.clean_content.lower()
     if message.author == bot.user:
         return
+    if message.author.id == 408785106942164992:
+        if message.content == '' or message.content is None:
+            print("Embed from OwO detected")
+            with open("./owo/incoming_embeds.txt", "ab") as f:
+                f.write(str(message.embeds.pop().to_dict()).encode("utf-8"))
+        else:
+            print("Message from OwO detected")
+            with open("./owo/incoming_messages.txt", "ab") as f:
+                f.write(message.content.encode("utf-8"))
+        f.close()
+
     if not any(banned_char in clean_message for banned_char in excluded_characters):
         if "69" in clean_message:
             await message.add_reaction("😏")
         if clean_message == "666":
             await message.add_reaction("😈")
+        if clean_message == "420":
+            await message.add_reaction("🪴")
     await bot.process_commands(message)
 
 

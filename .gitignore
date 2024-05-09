@@ -133,3 +133,5 @@ dmypy.json
 /dashboard/node_modules/
 /dashboard/config.json
 /.env_test
+
+/owo/*
