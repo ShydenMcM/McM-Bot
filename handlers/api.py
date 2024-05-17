@@ -1,4 +1,6 @@
+import json
 import logging
+import random
 
 import requests
 
@@ -21,3 +23,26 @@ class Kawaii:
         gif_url = gif_url_response.text.replace('"', '')
         logging.debug("GIF: %s", gif_url)
         return gif_url
+
+
+class Tenor:
+    def __init__(self, **kwargs):
+        self.base_url = "https://tenor.googleapis.com/v2/"
+        self.token = str(config.TENOR_API_KEY)
+        self.client_key = "mcm-bot-1670960368647"
+
+    def search_gif(self, search: str, **kwargs):
+        response = requests.get(
+            f"{self.base_url}search?q={search}&key={self.token}&client_key={self.client_key}&limit=5"
+        )
+        # load the GIFs using the urls for the smaller GIF sizes
+        gifs = json.loads(response.content)["results"]
+        urls = []
+        for gif in gifs:
+            urls.append(gif["media_formats"]["gif"]["url"])
+        return random.choice(urls)
+
+
+if __name__ == "__main__":
+    tenor = Tenor()
+    print(tenor.search_gif(search="you murderer"))

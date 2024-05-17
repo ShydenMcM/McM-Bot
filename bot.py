@@ -7,6 +7,7 @@ import discord
 from discord import Guild, Message
 from discord.ext import commands
 
+import responder.owo
 import settings
 from background_tasks.guilds import (
     get_guild_from_db,
@@ -118,15 +119,7 @@ async def on_message(message: Message):
     if message.author == bot.user:
         return
     if message.author.id == 408785106942164992:
-        if message.content == '' or message.content is None:
-            print("Embed from OwO detected")
-            with open("./owo/incoming_embeds.txt", "ab") as f:
-                f.write(str(message.embeds.pop().to_dict()).encode("utf-8") + "\n".encode("utf-8"))
-        else:
-            print("Message from OwO detected")
-            with open("./owo/incoming_messages.txt", "ab") as f:
-                f.write(message.content.encode("utf-8") + "\n".encode("utf-8"))
-        f.close()
+        await responder.owo.process_owo(message)
 
     if not any(banned_char in clean_message for banned_char in excluded_characters):
         if "69" in clean_message:
