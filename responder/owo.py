@@ -22,6 +22,8 @@ async def process_owo(message: Message):
 async def process_owo_embed(message: Message):
     if "You lost your streak of " in message.embeds.pop().to_dict():
         await message.reply(tenor.search_gif("fail"))
+    if "You earned 1,000 <:cowoncy:416043450337853441>" in message.embeds.pop().to_dict():
+        await message.reply(tenor.search_gif("applause"))
 
 
 async def process_owo_message(message: Message):
