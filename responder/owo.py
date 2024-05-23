@@ -20,7 +20,8 @@ async def process_owo(message: Message):
 
 
 async def process_owo_embed(message: Message):
-    return
+    if "You lost your streak of " in message.embeds.pop().to_dict():
+        await message.reply(tenor.search_gif("fail"))
 
 
 async def process_owo_message(message: Message):
