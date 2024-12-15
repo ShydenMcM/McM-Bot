@@ -37,10 +37,13 @@ async def process_owo_embed(message: Message):
     print(embed_description)
     if "You lost your streak of " in embed_description.get("footer").get("text"):
         await message.reply(tenor.search_gif("fail"))
-    if "You earned 1,000 <:cowoncy:416043450337853441>" in embed_description.get("description"):
-        await message.reply(tenor.search_gif("applause"))
+    if embed_description.get("description") is not None:
+        if "You earned 1,000 <:cowoncy:416043450337853441>" in embed_description.get("description"):
+            await message.reply(tenor.search_gif("applause"))
 
 
 async def process_owo_message(message: Message):
     if "** sacrificed **" in message.content:
         await message.reply(tenor.search_gif("murderer"))
+    if "** for a total of **" in message.content and "** sold **" in message.content:
+        await message.reply(tenor.search_gif("rich"))
