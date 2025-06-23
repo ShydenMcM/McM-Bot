@@ -43,7 +43,7 @@ aiohttp = "^3.12.13"
 aiomysql = "^0.2.0"
 cryptography = "^45.0.4"
 orjson = "^3.10.18"
-flake8 = "^7.0.0"
+flake8 = "^7.3.0"
 pre-commit = "^4.0.0"
 
 
