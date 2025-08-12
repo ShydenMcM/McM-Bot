@@ -44,7 +44,7 @@ aiomysql = "^0.2.0"
 cryptography = "^45.0.6"
 orjson = "^3.11.1"
 flake8 = "^7.3.0"
-pre-commit = "^4.0.0"
+pre-commit = "^4.3.0"
 
 
 [build-system]
